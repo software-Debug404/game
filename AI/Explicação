@@ -1,0 +1,45 @@
+Explicação da Lógica de IA do Inimigo
+
+Introdução:
+Este arquivo explica como funciona a lógica de IA para fazer um inimigo seguir e atacar o jogador em um jogo 2D. A implementação foi separada em uma classe reutilizável chamada `EnemyAI`, permitindo que você a utilize em outros projetos facilmente.
+
+Estrutura da Classe `EnemyAI`
+A classe `EnemyAI` recebe dois parâmetros principais:
+- `enemy`: O inimigo que seguirá o jogador.
+- `target`: O jogador que será perseguido.
+
+Ela possui as seguintes características:
+- Distância de Ataque (`attackThreshold`)**: Define a distância mínima para que o inimigo tente atacar o jogador.
+- Probabilidade de Evasão (`evadeProbability`)**: Define a chance do inimigo tentar desviar de ataques.
+- Aprendizado Adaptativo (`learningFactor`)**: Permite que o inimigo ajuste seu comportamento com base nas interações.
+- Agressividade Adaptativa (`adaptiveAggression`)**: Controla a frequência de ataques do inimigo com base no histórico de combate.
+
+Funcionamento da IA:
+1. Movimentação: O inimigo se move em direção ao jogador se estiver fora do alcance de ataque.
+2. Ataque: Se estiver próximo o suficiente, ele para de se mover e ataca, respeitando um tempo de recarga.
+3. Evasão: Em alguns momentos, ele pode tentar pular para evitar ataques.
+4. Aprendizado: O inimigo ajusta sua agressividade e sua chance de esquiva com base no histórico das batalhas.
+
+Como Utilizar:
+Para usar a IA do inimigo em seu jogo, instancie a classe da seguinte forma:
+
+javascript:
+const enemyAI = new EnemyAI(playerM, player);
+
+function gameLoop() {
+    enemyAI.update();
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
+
+Isso fará com que o inimigo siga automaticamente o jogador e ataque conforme necessário.
+
+Benefícios da Modularização:
+- Código Reutilizável: A IA pode ser aplicada a diferentes tipos de inimigos sem precisar reescrever a lógica.
+- Fácil Ajuste: Basta modificar os parâmetros como distância de ataque e agressividade para personalizar o comportamento.
+- Melhoria Contínua: Como o inimigo aprende com as interações, a jogabilidade se torna mais dinâmica e desafiadora.
+
+Com isso, você tem uma IA de inimigo funcional e adaptável para qualquer jogo de plataforma 2D. Se precisar de ajustes ou melhorias, basta modificar os parâmetros ou a estrutura da classe `EnemyAI`.
+
